@@ -19,6 +19,13 @@
             <a href="{{ route('admin.customers.manage') }}" class="bg-purple-500 hover:bg-purple-600 text-white font-semibold px-6 py-4 rounded shadow text-center">
             Manage Customers
         </a>
+
+            <!-- Manage Offers -->
+            <a href="{{ route('admin.offers.manage') }}" 
+            class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-6 py-4 rounded shadow text-center">
+                Manage Offers
+            </a>
+
         </div>
 
         <!-- Logout Button -->

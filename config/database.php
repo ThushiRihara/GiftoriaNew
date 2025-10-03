@@ -63,6 +63,13 @@ return [
             ]) : [],
         ],
 
+        'mongodb' => [
+            'driver'   => 'mongodb',
+            'dsn'      => env('DB_MONGO_DSN', 'mongodb://127.0.0.1:27017'),
+            'database' => env('DB_MONGO_DATABASE', 'giftoria'),
+    ],
+
+
         'mariadb' => [
             'driver' => 'mariadb',
             'url' => env('DB_URL'),

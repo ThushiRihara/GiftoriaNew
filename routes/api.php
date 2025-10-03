@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\AuthApiController;
 use App\Http\Controllers\API\AddOnController;
 use App\Http\Controllers\API\GiftController;
 use App\Http\Controllers\API\CategoryController;
+use App\Http\Controllers\API\OfferController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -30,6 +31,8 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::delete('/addons/{id}', [AddOnController::class, 'destroy']);
 });
 
+
+
 // Gifts CRUD (protected)
 Route::middleware('auth:sanctum')->group(function() {
     Route::get('/gifts', [GiftController::class, 'index']);
@@ -39,6 +42,9 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::middleware('auth:sanctum')->get('/gifts/form-data', [GiftController::class,'categoriesAndAddOns']);
 });
 
-Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
-    Route::get('/customers', [App\Http\Controllers\Admin\CustomerController::class, 'getCustomers']);
+Route::middleware('auth:admin')->group(function() {
+    Route::get('/offers', [App\Http\Controllers\Admin\OfferController::class, 'getOffers']);
+    Route::post('/offers', [App\Http\Controllers\Admin\OfferController::class, 'store']);
+    Route::post('/offers/{id}', [App\Http\Controllers\Admin\OfferController::class, 'update']);
+    Route::delete('/offers/{id}', [App\Http\Controllers\Admin\OfferController::class, 'destroy']);
 });
